@@ -1,0 +1,24 @@
+
+// Resizing and Gray scale
+
+files = dir('/home/rambo/Images/I_Stone/*.JPG');
+for k = 1:numel(files)
+     filename = ['/home/rambo/Images/I_Stone/' files(k).name];
+   rgb = imread(filename);
+     rgb=imresize(rgb, [128 128]);
+      newmap = rgb2gray(rgb);
+      
+   imwrite(newmap, ['/home/rambo/Images/Stone/'  files(k).name]]);
+end
+
+// Mirroring
+
+ files = dir('/home/rambo/Images/Stone/*.JPG');
+ for k = 1:numel(files)
+     filename = ['/home/rambo/Images/Stone/' files(k).name];
+   rgb = imread(filename);
+     rgb = flipdim(rgb,2); 
+     filename = strcat('ston', num2str(k), '.jpeg');
+
+   imwrite(rgb, ['/home/rambo/Images/Stone/' filename]);
+end
